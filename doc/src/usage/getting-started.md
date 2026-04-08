@@ -161,6 +161,13 @@ To ship package where the virtualenv is hidden see [shipping applications](../pa
 
 ### Setting up a development environment (optional)
 
+> [!IMPORTANT]
+> When using `uv2nix` to provision a development shell do not use `uv run`.
+>
+> `uv run` makes `uv` provision it's own virtual environment.
+>
+> `uv2nix` makes all Python scripts (including your own [entry points](https://peps.python.org/pep-0621/#entry-points)) available in the Nix development shell.
+
 When developing Python packages local packages are normally installed in [editable mode](https://setuptools.pypa.io/en/latest/userguide/development_mode.html).
 Editable packages make [entry points](https://packaging.python.org/en/latest/specifications/pyproject-toml/#entry-points) like `scripts` available in the virtual environment, but instead of installed Python files the virtualenv contains pointers to the source tree.
 This means that changes to the sources are immeditately activated and doesn't require a rebuild.
